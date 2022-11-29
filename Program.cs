@@ -21,13 +21,22 @@ namespace Training
 
       PopulateLists(people, logs);
 
-      OriginalTextFileProcessor.SavePeople(people, peopleFile);
+      // OriginalTextFileProcessor.SavePeople(people, peopleFile);
       
-      var newPeople = OriginalTextFileProcessor.LoadPeople(peopleFile);
+      // var newPeople = OriginalTextFileProcessor.LoadPeople(peopleFile);
 
-      foreach(var p in newPeople)
+      // foreach(var p in newPeople)
+      // {
+      //   Console.WriteLine($"{p.FirstName} {p.LastName} (IsAlive = {p.IsAlive})");
+      // }
+
+      OriginalTextFileProcessor.SaveLogs(logs, LogFile);
+
+      var newLogs = OriginalTextFileProcessor.LoadLogs(LogFile);
+
+      foreach(var log in newLogs)
       {
-        Console.WriteLine($"{p.FirstName} {p.LastName} (IsAlive = {p.IsAlive})");
+        Console.WriteLine($"{log.ErrorCode} : {log.Message} (Time = {log.TimeOfEvent})");
       }
     }
 
@@ -62,6 +71,20 @@ namespace Training
       File.AppendAllLines(filePath, lines);
     }
 
+    public static void SaveLogs(List<LogEntry> logs, string filePath)
+    {
+      List<string> lines = new List<string>();
+
+      lines.Add("ErrorCode,Message,TimeOfEvent");
+
+      foreach(var log in logs)
+      {
+        lines.Add($"{log.ErrorCode},{log.Message},{log.TimeOfEvent.ToShortTimeString()}");
+      }
+
+      File.AppendAllLines(filePath, lines);
+    }
+
     public static List<Person> LoadPeople(string filePath)
     {
       List<Person> output = new List<Person>();
@@ -83,6 +106,28 @@ namespace Training
       }
       return output;
     }
+
+    public static List<LogEntry> LoadLogs(string filePath)
+    {
+      List<LogEntry> output = new List<LogEntry>();
+      //LogEntry log;
+      var lines = File.ReadAllLines(filePath).ToList();
+      lines.RemoveAt(0);
+
+      foreach(var line in lines)
+      {
+        var vals = line.Split(',');
+
+        LogEntry log = new LogEntry() 
+        {
+          ErrorCode = int.Parse(vals[0]),
+          Message = vals[1],
+          TimeOfEvent = DateTime.Parse(vals[2])
+        };
+        output.Add(log);
+      }
+      return output;
+    }
   }
 }
 
@@ -99,6 +144,6 @@ namespace Training
   {
     public int ErrorCode { get; set; }
     public string Message { get; set; }
-    public DateTime TimeOfEvent { get; } = DateTime.Now;
+    public DateTime TimeOfEvent { get; set; } = DateTime.Now;
   }
 }
