@@ -9,15 +9,15 @@ namespace Training
   {
     public static void Main()
     {
-      
+      DemonstrateTextFileStorage();
     }
     private static void DemonstrateTextFileStorage()
     {
       List<Person> people = new List<Person>();
       List<LogEntry> logs = new List<LogEntry>();
 
-      string peopleFile = @"C:\Users\Visitor06\Desktop/people.csv";
-      string LogFile = @"C:\Users\Visitor06\Desktop/logs.csv";
+      string peopleFile = @"C:\Users\Visitor06\Desktop\people.csv";
+      string LogFile = @"C:\Users\Visitor06\Desktop\logs.csv";
 
       PopulateLists(people, logs);
 
