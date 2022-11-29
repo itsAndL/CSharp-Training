@@ -16,8 +16,8 @@ namespace Training
       List<Person> people = new List<Person>();
       List<LogEntry> logs = new List<LogEntry>();
 
-      string peopleFile = @"C:\Users\Visitor06\Desktop\people.csv";
-      string LogFile = @"C:\Users\Visitor06\Desktop\logs.csv";
+      string peopleFile = @"C:\Users\lenovo\source\people.csv";
+      string LogFile = @"C:\Users\lenovo\source\logs.csv";
 
       PopulateLists(people, logs);
 
@@ -27,7 +27,7 @@ namespace Training
 
       foreach(var p in newPeople)
       {
-        Console.WriteLine($"{P.FirstName} {P.LastName} (IsAlive = {p.IsAlive})");
+        Console.WriteLine($"{p.FirstName} {p.LastName} (IsAlive = {p.IsAlive})");
       }
     }
 
