@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace Training
 {
@@ -49,6 +50,55 @@ namespace Training
       logs.Add(new LogEntry() {Message = "I blow up", ErrorCode = 3103});
       logs.Add(new LogEntry() {Message = "I'm too awesomw", ErrorCode = 2202});
       logs.Add(new LogEntry() {Message = "I was tired", ErrorCode = 9997});
+    }
+  }
+}
+
+namespace Training
+{
+  public static class GenericTextFileProcessor
+  {
+    public static List<T> LoadFromTextFile<T>(string filePath) where T : class , new()
+    {
+      List<string> lines = File.ReadAllLines(filePath).ToList();
+      List<T> output = new List<T>();
+      T entry = new T();
+      PropertyInfo[] cols = entry.GetType().GetProperties();
+
+      if(lines.Count < 2)
+      {
+        throw new IndexOutOfRangeException("The file was either empty or missing.");
+      }
+
+      string[] headers = lines[0].Split(',');
+      lines.RemoveAt(0);
+
+      foreach(var line in lines)
+      {
+        string[] vals = line.Split(',');
+        entry = new T();
+
+        foreach(PropertyInfo col in cols)
+        {
+          for( int i = 0; i < headers.Length; i++ )
+          {
+            if(col.Name == headers[i])
+            {
+              col.SetValue(entry, Convert.ChangeType(vals[i], col.PropertyType));
+              break;
+            }
+          }
+        }
+
+        output.Add(entry);
+      } 
+      
+      return output;
+    }
+
+    public static void SaveToTextFile<T>(List<T> data, string filePath) where T : class, new()
+    {
+
     }
   }
 }
