@@ -77,6 +77,7 @@ namespace Training
 
 namespace Training
 {
+  // public static class GenericTextFileProcessor<S>
   public static class GenericTextFileProcessor
   {
     // public static List<T> LoadFromTextFile<T, U>(string filePath) where T : class , new() where U: Person
