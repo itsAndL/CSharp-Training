@@ -18,9 +18,30 @@ namespace Training
       List<LogEntry> logs = new List<LogEntry>();
 
       string peopleFile = @"C:\Users\lenovo\source\people.csv";
-      string LogFile = @"C:\Users\lenovo\source\logs.csv";
+      string logFile = @"C:\Users\lenovo\source\logs.csv";
 
       PopulateLists(people, logs);
+
+      /* New way of doing things - generics */
+
+      GenericTextFileProcessor.SaveToTextFile<Person>(people, peopleFile);
+      GenericTextFileProcessor.SaveToTextFile<LogEntry>(logs, logFile);
+
+      List<Person> newPeople = GenericTextFileProcessor.LoadFromTextFile<Person>(peopleFile);
+
+      foreach(Person p in newPeople)
+      {
+        Console.WriteLine($"{p.FirstName} {p.LastName} (IsAlive = {p.IsAlive})");
+      }
+
+      List<LogEntry> newLogs = GenericTextFileProcessor.LoadFromTextFile<LogEntry>(logFile);
+
+      foreach(var log in newLogs)
+      {
+        Console.WriteLine($"{log.ErrorCode}: {log.Message} at {log.TimeOfEvent}");
+      }
+
+      /* Old way of doing things - non-generics */
 
       // OriginalTextFileProcessor.SavePeople(people, peopleFile);
       
@@ -31,14 +52,14 @@ namespace Training
       //   Console.WriteLine($"{p.FirstName} {p.LastName} (IsAlive = {p.IsAlive})");
       // }
 
-      OriginalTextFileProcessor.SaveLogs(logs, LogFile);
+      // OriginalTextFileProcessor.SaveLogs(logs, logFile);
 
-      var newLogs = OriginalTextFileProcessor.LoadLogs(LogFile);
+      // var newLogs = OriginalTextFileProcessor.LoadLogs(logFile);
 
-      foreach(var log in newLogs)
-      {
-        Console.WriteLine($"{log.ErrorCode} : {log.Message} (Time = {log.TimeOfEvent})");
-      }
+      // foreach(var log in newLogs)
+      // {
+      //   Console.WriteLine($"{log.ErrorCode}: {log.Message} at {log.TimeOfEvent}");
+      // }
     }
 
     private static void PopulateLists(List<Person> people, List<LogEntry> logs)
@@ -98,7 +119,38 @@ namespace Training
 
     public static void SaveToTextFile<T>(List<T> data, string filePath) where T : class, new()
     {
+      List<string> lines = new List<string>();
 
+      if(data == null || data.Count == 0)
+      {
+        throw new ArgumentNullException("data", "You must populate the data parameter with at least one value.");
+      }
+
+      // T entry = new T();
+      // PropertyInfo[] cols = entry.GetType().GetProperties();
+
+      PropertyInfo[] cols = data[0].GetType().GetProperties();
+
+      string line = "";
+      foreach(PropertyInfo col in cols)
+      {
+        line += $"{col.Name},";
+      }
+      lines.Add(line.Substring(0,line.Length - 1));
+
+      foreach(T row in data)
+      {
+
+        line = "";
+        foreach(PropertyInfo col in cols)
+        {
+          line += $"{col.GetValue(row, null)},";
+        }
+
+        lines.Add(line.Substring(0,line.Length - 1));
+      }
+
+      File.AppendAllLines(filePath, lines);
     }
   }
 }
@@ -138,7 +190,7 @@ namespace Training
     public static List<Person> LoadPeople(string filePath)
     {
       List<Person> output = new List<Person>();
-      Person p;
+      // Person p;
       var lines = File.ReadAllLines(filePath).ToList();
       lines.RemoveAt(0);
 
@@ -146,7 +198,7 @@ namespace Training
       {
         var vals = line.Split(',');
 
-        p = new Person() 
+        Person p = new Person() 
         {
           FirstName = vals[0],
           LastName = vals[1],
