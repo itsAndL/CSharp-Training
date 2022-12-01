@@ -79,6 +79,7 @@ namespace Training
 {
   public static class GenericTextFileProcessor
   {
+    // public static List<T> LoadFromTextFile<T, U>(string filePath) where T : class , new() where U: Person
     public static List<T> LoadFromTextFile<T>(string filePath) where T : class , new()
     {
       List<string> lines = File.ReadAllLines(filePath).ToList();
