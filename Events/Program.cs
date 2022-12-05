@@ -1,74 +1,73 @@
 using System;
-using EventExample;
-					
+
 namespace Training
 {
-  public class TestMyEvnt
+  class Program
   {
-    public static void Main()
+    static void Main()
     {
-      Account myAccount = new Account(1000);
-      myAccount.TransactionMade += new TransactionHandler(SendNotification);
-      myAccount.Credit(50);
-      Console.WriteLine("Your Current Balance is : " + myAccount.BalanceAmount);
-
+      Person person = new Person("Kendra", 27);
+      person.PersonInfo += MInformation;
+      person.AMethod();
     }
 
-    private static void SendNotification(object sender, TransactionEventArgs e)
+    public static void MInformation(object sender, Person p, IDKArgs e)
     {
-      Console.WriteLine($"Your Acount is {e.TranscationType} for ${e.TransactionAmount}");
+      Console.WriteLine($"Here's the message : {e.Message}");
+      e.EMethod();
+      Console.WriteLine($"Name = {p.Name}, Age = {p.Age}");
     }
   }
 }
-namespace EventExample
+
+namespace Training
 {
-  public delegate void TransactionHandler(object sender, TransactionEventArgs e);
-  
-  public class Account
+  public delegate void PersonHandler(object sender, Person p, IDKArgs e); // DELEGATE definition
+
+  public class Person
   {
-    public int BalanceAmount { get; set; }
-    public Account(int balanceAmount)
+    public event PersonHandler PersonInfo; // EVENT definition
+
+      // when The EVENT PersonInfo is RAISED, invokes the PersonHandler delegate.
+      // DELEGATES implement EVENT HANDLING
+    
+    public string Name { get; }
+    public int Age { get; }
+    public Person( string name, int age)
     {
-      BalanceAmount = balanceAmount;
+      Name = name;
+      Age = age;
     }
 
-    public event TransactionHandler TransactionMade;
-
-    public void Debit(int debitAmount)
+    public void AMethod()
     {
-      if(debitAmount < BalanceAmount)
-      {
-        BalanceAmount -= debitAmount;
-        TransactionEventArgs e = new TransactionEventArgs(debitAmount, "Debited");
-        OnTransactionMade(e);
-      }
+      IDKArgs e = new IDKArgs("Almost, just come back and check all the stuff that dosn't make sence, reread the article.");
+      OnPersonInfo(this, e); // the EVENT : we just call the method AMethod()
     }
 
-    protected virtual void OnTransactionMade(TransactionEventArgs e)
+    private void OnPersonInfo(Person p, IDKArgs e)
     {
-      if(TransactionMade != null)
-      {
-        TransactionMade(this, e);
-      }
-    }
-
-    public void Credit(int creditAmount)
-    {
-      BalanceAmount += creditAmount;
-        TransactionEventArgs e = new TransactionEventArgs(creditAmount, "credited");
-        OnTransactionMade(e);
+      if( PersonInfo != null ) PersonInfo(this, p, e); // RAISE the EVENT
     }
   }
+}
 
-  public class TransactionEventArgs : EventArgs
+namespace Training
+{
+  public class IDKArgs : EventArgs
   {
-    public int TransactionAmount { get; }
-    public string TranscationType { get; }
+    public string Message { get; set; }
+    public IDKArgs(string message) => Message = message;
+  }
+}
 
-    public TransactionEventArgs(int transactionAmount, string transcationType)
+namespace Training
+{
+  public static class Extension
+  {
+    public static void EMethod(this IDKArgs a)
     {
-      TransactionAmount = transactionAmount;
-      TranscationType = transcationType;
+      Console.WriteLine($"{a.Message.Substring(0,10)} ++ hello again :)");
     }
   }
 }
