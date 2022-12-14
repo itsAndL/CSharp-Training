@@ -10,7 +10,8 @@ namespace Training
       person.PersonInfo += MInformation;
       person.AMethod();
     }
-
+    
+    // The Event Handler
     public static void MInformation(object sender, Person p, IDKArgs e)
     {
       Console.WriteLine($"Here's the message : {e.Message}");
