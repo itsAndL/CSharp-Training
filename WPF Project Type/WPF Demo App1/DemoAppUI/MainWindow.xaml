@@ -1,0 +1,67 @@
+<Window x:Class="DemoAppUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoAppUI"
+        mc:Ignorable="d"
+        Title="Demo App" Height="450" Width="800" FontSize="18" FontFamily="Bahnschrift SemiBold">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label x:Name="fullNameLabel" Grid.Row="1" Grid.Column="1" 
+               FontWeight="Bold" Content="Full Name" />
+
+        <TextBox x:Name="fullNameText" Grid.Row="1" Grid.Column="2" 
+                 Width="200" Margin="10"/>
+
+        <GroupBox Grid.Row="1" Grid.Column="3" Margin="40,20,0,0"
+                  Header="Employees Of Our Company" Grid.RowSpan="2">
+            <ComboBox x:Name="dropdown" Margin="0,10,0,0"/>
+        </GroupBox>
+
+        <Label x:Name="departmnetLabel" Grid.Row="2" Grid.Column="1" 
+               FontWeight="Bold" Content="Departmnet" />
+
+        <TextBox x:Name="departmnetText" Grid.Row="2" Grid.Column="2" 
+                 Width="200" Margin="10" />
+
+        <Label x:Name="jobLabel" Grid.Row="3" Grid.Column="1" 
+               FontWeight="Bold" Content="Job" />
+
+        <TextBox x:Name="jobText" Grid.Row="3" Grid.Column="2"
+                 Width="200" Margin="10" />
+        
+        <Label x:Name="emailLabel" Grid.Row="4" Grid.Column="1" 
+               FontWeight="Bold" Content="Email" />
+
+        <TextBox x:Name="emailText" Grid.Row="4" Grid.Column="2" 
+                 Width="200" Margin="10" />
+
+        <Button x:Name="saveButton" Content="Save" Grid.Row="5" 
+                Grid.Column="1" Grid.ColumnSpan="2" Margin="30" FontWeight="Bold" FontStyle="Italic" Foreground="Black" BorderBrush="#FF707070" Background="#FF4EC36E" Click="saveButton_Click"/>
+
+
+        <TextBlock x:Name="feedbackTextBlock" Grid.Row="8" Grid.Column="1" Text="Feedback" FontSize="24" FontFamily="Britannic Bold" Foreground="Black" />
+
+        <Label x:Name="messageLabel" Grid.Row="8" Grid.Column="2"
+               FontSize="18" Foreground="#FF1E507C" Grid.ColumnSpan="3"/>
+    </Grid>
+</Window>
