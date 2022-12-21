@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DemoLibrary
 {
-    public class DataAccess
+    public static class DataAccess
     {
         public static void AddNewEmployee(string filePath, Employee employee)
         {
