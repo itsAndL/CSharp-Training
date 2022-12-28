@@ -1,0 +1,146 @@
+<Window x:Class="AppUI.CarsInOurStock"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppUI"
+        mc:Ignorable="d"
+        Title="Cars In Our Stock" Height="700" Width="1500" Icon="https://cdn-icons-png.flaticon.com/512/31/31126.png" FontFamily="Cascadia Code" FontSize="18" >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="4" Orientation="Vertical" Margin="0,50,0,0">
+            
+            <TextBlock Text=" Cars In Agency Stock" FontFamily="Arial Black" FontSize="24" Foreground="#FFF9F9F9" Background="#FF9B9797" Margin="0,0,400,0" />
+
+            <ListBox x:Name="myListBox" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxHeight="370" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding ImageSource}" MaxWidth="450" MaxHeight="350" Margin="15"/>
+                            <StackPanel Orientation="Vertical" Margin="15">
+                                <TextBlock Text="{Binding Condition}" Margin="5" FontFamily="Cascadia Mono Light" FontSize="16" />
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <TextBlock Text="{Binding Year}" />
+                                    <TextBlock Text=" " />
+                                    <TextBlock Text="{Binding Make}" />
+                                    <TextBlock Text=" " />
+                                    <TextBlock Text="{Binding Model}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <TextBlock Text="{Binding Miles}" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                                    <TextBlock Text=" mi" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                                </StackPanel>
+                                <GroupBox Header="Basics" FontFamily="Cascadia Code" FontWeight="Bold" FontStyle="Italic" Margin="0,35,0,0" FontSize="22" >
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal" >
+                                            <TextBlock Text="Exterior color" Margin="10,5,40,0" FontFamily="Candara" FontSize="18"/>
+                                            <TextBlock Text="{Binding ExteriorColor}" Margin="0,10,0,0" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                                        </StackPanel>
+                                        <Line X1="200" Stroke="#FF504E4E" StrokeThickness="1" Margin="5,10,5,10"/>
+
+                                        <StackPanel Orientation="Horizontal" >
+                                            <TextBlock Text="Interior color" Margin="10,5,40,0" FontFamily="Candara" FontSize="18"/>
+                                            <TextBlock Text="{Binding InteriorColor}" Margin="0,10,0,0" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                                        </StackPanel>
+                                        <Line X1="200" Stroke="#FF504E4E" StrokeThickness="1" Margin="5,10,5,10"/>
+
+                                        <StackPanel Orientation="Horizontal" >
+                                            <TextBlock Text="ZIP" Margin="10,5,115,0" FontFamily="Candara" FontSize="18"/>
+                                            <TextBlock Text="{Binding ZIP}" Margin="0,10,0,10" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </GroupBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="4" Margin="80,0,0,0">
+            <TextBlock Text="Add new car" FontFamily="Arial Black" FontSize="36" Foreground="Black" Margin="20,10,30,0" Background="#FFD9D9D9" />
+
+            <GroupBox Margin="25,5,0,0" FontFamily="Cascadia Code" FontWeight="Bold" FontStyle="Italic" >
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Year" Margin="10,15,10,0" FontFamily="Candara" FontSize="18"/>
+                        <TextBox x:Name="yearText" Margin="80,15,0,0" Width="150" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                    </StackPanel>
+                    <Line X1="280" Stroke="#FF504E4E" StrokeThickness="1" Margin="5,10,5,10"/>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Make" Margin="10,5,10,0" FontFamily="Candara" FontSize="18"/>
+
+                        <!-- Someday I'm goona come back here to make a change here instead of using TextBox I will use ListBox which contains variables of the CarBrand enum. -->
+                        <TextBox x:Name="makeText" Margin="70,5,0,0" Width="150" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                    </StackPanel>
+                    <Line X1="280" Stroke="#FF504E4E" StrokeThickness="1" Margin="5,10,5,10"/>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Model" Margin="10,5,10,0" FontFamily="Candara" FontSize="18"/>
+                        <TextBox x:Name="modelText" Margin="65,5,0,0" Width="150" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                    </StackPanel>
+                    <Line X1="280" Stroke="#FF504E4E" StrokeThickness="1" Margin="5,10,5,10"/>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Miles" Margin="10,5,10,0" FontFamily="Candara" FontSize="18"/>
+                        <TextBox x:Name="milesText" Margin="75,5,0,0" Width="150" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                    </StackPanel>
+                    <Line X1="280" Stroke="#FF504E4E" StrokeThickness="1" Margin="5,10,5,10"/>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="ZIP" Margin="10,5,10,0" FontFamily="Candara" FontSize="18"/>
+                        <TextBox x:Name="zipText" Margin="91,5,0,0" Width="150" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                    </StackPanel>
+                    <Line X1="280" Stroke="#FF504E4E" StrokeThickness="1" Margin="5,10,5,10"/>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Image Source" Margin="10,5,10,0" FontFamily="Candara" FontSize="18"/>
+                        <TextBox x:Name="imageSourceText" Margin="10,5,0,0" Width="150" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                    </StackPanel>
+                    <Line X1="280" Stroke="#FF504E4E" StrokeThickness="1" Margin="5,10,5,10"/>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Exterior Color" Margin="10,5,10,0" FontFamily="Candara" FontSize="18"/>
+                        <TextBox x:Name="exteriorColorText" Margin="6,5,0,0" Width="150" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                    </StackPanel>
+                    <Line X1="280" Stroke="#FF504E4E" StrokeThickness="1" Margin="5,10,5,10"/>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Interior Color" Margin="10,5,10,0" FontFamily="Candara" FontSize="18"/>
+                        <TextBox x:Name="interiorColorText" Margin="12,5,0,0" Width="150" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                    </StackPanel>
+                    <Line X1="280" Stroke="#FF504E4E" StrokeThickness="1" Margin="5,10,5,10"/>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="Condition" Margin="10,5,10,0" FontFamily="Candara" FontSize="18"/>
+                        <TextBox x:Name="conditionText" Margin="40,5,0,10" Width="150" FontFamily="Cascadia Mono Light" FontSize="16"/>
+                    </StackPanel>
+
+                    <Button x:Name="saveTheNewCarButton" Content="Save the new car" Margin="30,15,30,0" FontSize="24" FontWeight="Bold" FontFamily="Segoe UI" Foreground="White" Background="#FF7B1898" Click="saveTheNewCarButton_Click" />
+
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+    
+</Window>
