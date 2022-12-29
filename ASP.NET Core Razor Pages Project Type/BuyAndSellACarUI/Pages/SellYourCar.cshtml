@@ -1,0 +1,123 @@
+@page
+@model BuyAndSellACarUI.Pages.SellYourCarModel
+@{
+    ViewData["Title"] = "Sell Your Car";
+}
+
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <img class="img-logo" src="https://images.squarespace-cdn.com/content/v1/62911c837c2fec5990c2d54d/955fc983-3f1e-4dac-aed7-bf854264c895/Untitled+design+%281%29+%281%29.png?format=750w" height="350" width="350">
+        <form method="post">
+
+            <div class="formbold-form-title">
+                <h2 class="">Seller Info</h2>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.SellerInfo.FullName"
+                           placeholder="Full Name"
+                           class="formbold-form-input" />
+                </div>
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.SellerInfo.PhoneNumber"
+                           placeholder="Phone Number"
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.SellerInfo.Email"
+                           placeholder="Email"
+                           class="formbold-form-input" />
+                </div>
+
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.SellerInfo.Adress"
+                           placeholder="Address"
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-mb-3">
+                <div>
+                    <textarea rows="6"
+                              asp-for="NewCar.SellerInfo.SellerNote"
+                              placeholder="Type your note about this car"
+                              class="formbold-form-input"></textarea>
+                </div>
+            </div>
+
+            <div class="formbold-form-title">
+                <h2 class="">Car Info</h2>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.Condition"
+                           placeholder="Condition"
+                           class="formbold-form-input" />
+                </div>
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.Year"
+                           placeholder="Year"
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.Make"
+                           placeholder="Make"
+                           class="formbold-form-input" />
+                </div>
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.Model"
+                           placeholder="Model"
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.Mileage"
+                           placeholder="Mileage"
+                           class="formbold-form-input" />
+                </div>
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.Price"
+                           placeholder="Price"
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.FuelType"
+                           placeholder="Fuel Type"
+                           class="formbold-form-input" />
+                </div>
+                <div>
+                    <input type="text"
+                           asp-for="NewCar.ImageSource"
+                           placeholder="Image Source"
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <button class="formbold-btn" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
