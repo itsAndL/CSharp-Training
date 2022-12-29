@@ -1,0 +1,35 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Cars For Sale";
+}
+
+
+@foreach (var car in Model.Cars)
+{
+    <div class="wrapper">
+
+        <div class="product-img">
+            <img src=@car.ImageSource height="420" width="327">
+        </div>
+        <div class="product-info">
+            <div class="product-text">
+                <div>
+                    <h1>@car.Year @car.Make @car.Model</h1>
+                    <h2>Condition: @car.Condition</h2>
+                    <h2>Mileage: @car.Mileage mi.</h2>
+                    <h2>Fule type: @car.FuelType</h2>
+                </div>
+
+                <div>
+                    <h1>Seller's info</h1>
+                    <h2>Full Name: @car.SellerInfo.FullName</h2>
+                    <h2>Phone Number: @car.SellerInfo.PhoneNumber</h2>
+                    <h2>Email: @car.SellerInfo.Email</h2>
+                    <h2>Adress: @car.SellerInfo.Adress</h2>
+                    <h2>Seller note: @car.SellerInfo.SellerNote</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+}
