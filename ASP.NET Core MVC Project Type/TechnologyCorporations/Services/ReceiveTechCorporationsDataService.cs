@@ -11,7 +11,7 @@ namespace TechnologyCorporations.Services
             WebHostEnvironment = webHostEnvironment;
         }
 
-        private string jsonFileName => Path.Combine(WebHostEnvironment.WebRootPath, "data", "TechCorporations.json");
+        private string jsonFileName => Path.Combine(WebHostEnvironment.WebRootPath, "data", "techCorporations.json");
 
         public List<TechCorporationModel> GetTechCorporations()
         {
