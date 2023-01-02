@@ -5,7 +5,7 @@ using System.Text.Json;
 using AspNetCoreWebApiProjectType.Models;
 using Microsoft.AspNetCore.Hosting;
 
-namespace ContosoCrafts.WebSite.Services
+namespace AspNetCoreWebApiProjectType.Services
 {
     public class DeserializingTechCompaniesService
     {
