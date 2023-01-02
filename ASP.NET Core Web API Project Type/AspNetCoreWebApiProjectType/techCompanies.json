@@ -1,0 +1,26 @@
+[
+  {
+    "CorporationName": "Microsoft",
+    "CustomerService": " 1 (800) 642-7676",
+    "Founders": " Bill Gates, Paul Allen",
+    "Headquarters": "Redmond, WA",
+    "Founded": "April 4, 1975, Albuquerque, NM",
+    "ImageSource": "https://pbs.twimg.com/profile_images/1268237607147728896/1CRvsTJ1_400x400.png"
+  },
+  {
+    "CorporationName": "Google",
+    "CustomerService": "1 (866) 246-6453",
+    "Founders": "Larry Page, Sergey Brin",
+    "Headquarters": "Mountain View, CA",
+    "Founded": "September 4, 1998, Menlo Park, CA",
+    "ImageSource": "https://kgo.googleusercontent.com/profile_vrt_raw_bytes_1587515358_10512.png"
+  },
+  {
+    "CorporationName": "Apple",
+    "CustomerService": "1 (800) 692-7753",
+    "Founders": "Steve Jobs, Steve Wozniak, Ronald Wayne",
+    "Headquarters": "Cupertino, CA",
+    "Founded": "April 1, 1976, Los Altos, CA",
+    "ImageSource": "https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png?202212191136"
+  }
+]
