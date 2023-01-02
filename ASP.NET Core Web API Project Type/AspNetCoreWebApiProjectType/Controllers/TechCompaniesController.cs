@@ -1,5 +1,5 @@
 using AspNetCoreWebApiProjectType.Models;
-using ContosoCrafts.WebSite.Services;
+using AspNetCoreWebApiProjectType.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreWebApiProjectType.Controllers
