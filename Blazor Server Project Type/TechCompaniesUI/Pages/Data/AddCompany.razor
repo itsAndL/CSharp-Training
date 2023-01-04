@@ -1,0 +1,71 @@
+@page "/Data/AddCompany"
+
+@using TechCompaniesUI.Models
+@using TechCompaniesLibrary.Models
+@using TechCompaniesLibrary.Services
+@inject TechCompaniesService _db
+
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <img class="img-logo" src="https://cdn-icons-png.flaticon.com/512/2312/2312400.png" />
+        <EditForm Model="newCompany" OnValidSubmit="InsertNewCompany">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="formbold-input-flex">
+                <div>
+                    <InputText placeholder="Company Name" class="formbold-form-input" @bind-Value="@newCompany.CompanyName" />
+                </div>
+                <div>
+                    <InputText placeholder="Headquarters" class="formbold-form-input" @bind-Value="@newCompany.Headquarters" />
+                </div>
+            </div>
+            <div class="formbold-input-flex">
+                <div>
+                    <InputText placeholder="Founders" class="formbold-form-input" @bind-Value="@newCompany.Founders" />
+                </div>
+                <div>
+                    <InputText placeholder="Founded" class="formbold-form-input" @bind-Value="@newCompany.Founded" />
+
+                </div>
+            </div>
+
+            <div class="formbold-mb-3">
+                <InputText placeholder="Url" class="formbold-form-input" @bind-Value="@newCompany.Url" />
+            </div>
+            <div class="formbold-mb-3">
+                <InputText placeholder="Image Source" class="formbold-form-input" @bind-Value="@newCompany.ImageSource" />
+            </div>
+            <div class="formbold-mb-3">
+                <InputTextArea 
+                    @bind-Value="@newCompany.Description" 
+                    class="formbold-form-input" 
+                    rows="6"
+                    placeholder="Description about the new company" />
+            </div>
+        
+            <button type="submit" class="formbold-btn">Add new Tech Company</button>
+        </EditForm>
+    </div>
+</div>
+
+@code
+{
+    private DisplayCompanyModel newCompany = new();
+
+    private void InsertNewCompany()
+    {
+        CompanyModel c = new()
+            {
+                CompanyName = newCompany.CompanyName,
+                Description = newCompany.Description,
+                Headquarters = newCompany.Headquarters,
+                Founders = newCompany.Founders,
+                Founded = newCompany.Founded,
+                Url = newCompany.Url,
+                ImageSource = newCompany.ImageSource,
+        };
+
+        _db.InsertCompany(c);
+        newCompany = new();
+    }
+}
