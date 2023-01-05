@@ -1,0 +1,47 @@
+[
+  {
+    "CompanyName": "Google",
+    "Description": "Google LLC is an American multinational technology company focusing on search engine technology, online advertising, cloud computing, computer software, quantum computing, e-commerce, artificial intelligence, and consumer electronics.",
+    "Headquarters": "Mountain View, CA",
+    "Founders": "Larry Page, Sergey Brin",
+    "Founded": "September 4, 1998, Menlo Park, CA",
+    "Url": "https://www.google.com/",
+    "ImageSource": "https://kgo.googleusercontent.com/profile_vrt_raw_bytes_1587515358_10512.png"
+  },
+  {
+    "CompanyName": "Meta",
+    "Description": "Meta Platforms, Inc., doing business as Meta and formerly named Facebook, Inc., and TheFacebook, Inc., is an American multinational technology conglomerate based in Menlo Park, California. The company owns Facebook, Instagram, and WhatsApp, among other products and services.",
+    "Headquarters": "Menlo Park, CA",
+    "Founders": "Mark Zuckerberg, Andrew McCollum, Chris Hughes, Eduardo Saverin, Dustin Moskovitz",
+    "Founded": "February 2004, Cambridge, MA",
+    "Url": "https://www.meta.com/",
+    "ImageSource": "https://pbs.twimg.com/profile_images/1453818753880190978/HqrrEcrI_400x400.png"
+  },
+  {
+    "CompanyName": "Twitter",
+    "Description": "Twitter, Inc. is an American social media company based in San Francisco, California. The company operates the microblogging and social networking service Twitter. It previously operated the Vine short video app and Periscope livestreaming service.",
+    "Headquarters": "San Francisco, CA",
+    "Founders": "Jack Dorsey, Evan Williams, Noah Glass, Biz Stone",
+    "Founded": "March 21, 2006, San Francisco, CA CEO: Elon Musk (Oct 27, 2022\u2013)",
+    "Url": "https://twitter.com/home",
+    "ImageSource": "https://help.twitter.com/content/dam/help-twitter/brand/logo.png"
+  },
+  {
+    "CompanyName": "Microsoft",
+    "Description": "Microsoft Corporation is an American multinational technology corporation producing computer software, consumer electronics, personal computers, and related services.",
+    "Headquarters": "Redmond, WA",
+    "Founders": "Bill Gates, Paul Allen",
+    "Founded": "Bill Gates, Paul Allen",
+    "Url": "https://www.microsoft.com/en-us/",
+    "ImageSource": "https://www.gartner.com/imagesrv/peer-insights/vendors/logos/microsoft.jpg"
+  },
+  {
+    "CompanyName": "Amazon",
+    "Description": "Amazon.com, Inc. is an American multinational technology company focusing on e-commerce, cloud computing, online advertising, digital streaming, and artificial intelligence. ",
+    "Headquarters": "Seattle, WA",
+    "Founders": "Jeff Bezos",
+    "Founded": "July 5, 1994, Bellevue, WA",
+    "Url": "https://www.amazon.com/",
+    "ImageSource": "https://animationvisarts.com/wp-content/uploads/2020/12/Amazon-current-Logo-2.jpg"
+  }
+]
