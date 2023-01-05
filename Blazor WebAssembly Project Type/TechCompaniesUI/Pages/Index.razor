@@ -1,0 +1,53 @@
+@page "/"
+
+@using TechCompaniesUI.Models
+@inject HttpClient Http
+
+<PageTitle>Home</PageTitle>
+
+@if (companies == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Company name</th>
+                <th>Description</th>
+                <th>Headquarters</th>
+                <th>Founders</th>
+                <th>Founded</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in companies)
+            {
+                <tr>
+                    <td>
+                        <a href=@c.Url>
+                            <img src="@c.ImageSource" height="150" width="150" />
+                        </a>
+                    </td>
+                    <td>@c.CompanyName</td>
+                    <td>@c.Description</td>
+                    <td>@c.Headquarters</td>
+                    <td>@c.Founders</td>
+                    <td>@c.Founded</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code
+{
+    private List<CompanyModel>? companies;
+
+    protected override async Task OnInitializedAsync()
+    {
+        companies = await Http.GetFromJsonAsync<List<CompanyModel>>(@"sample-data\techCompanies.json");
+    }
+}
