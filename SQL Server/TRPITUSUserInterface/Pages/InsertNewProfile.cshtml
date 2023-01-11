@@ -1,0 +1,110 @@
+@page
+@model TRPITUSUserInterface.Pages.InsertNewProfileModel
+@{
+    ViewData["Title"] = "Insert New Profile";
+}
+
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <img class="img-logo" src="https://cdn-icons-png.flaticon.com/512/2312/2312400.png" />
+        <form method="post">
+
+            <div class="formbold-form-title">
+                <h2 class="">New Profile Info</h2>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewProfile.Name"
+                           placeholder="Name"
+                           class="formbold-form-input" />
+                </div>
+                <div>
+                    <input type="number"
+                           asp-for="NewProfile.Age"
+                           placeholder="Age"
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewProfile.Residence"
+                           placeholder="Residence"
+                           class="formbold-form-input" />
+                </div>
+                <div>
+                    <input type="text"
+                           asp-for="NewProfile.Citizenship "
+                           placeholder="Citizenship "
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewProfile.MaritalStatus "
+                           placeholder="Marital Status "
+                           class="formbold-form-input" />
+                </div>
+                <div>
+                    <input type="number"
+                           asp-for="NewProfile.Children"
+                           placeholder="Children"
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewProfile.Education"
+                           placeholder="Education"
+                           class="formbold-form-input" />
+                </div>
+                <div>
+                    <input type="text"
+                           asp-for="NewProfile.ImageSource"
+                           placeholder="Image Source"
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewProfile.Rank"
+                           placeholder="Rank"
+                           class="formbold-form-input" />
+                </div>
+                <div>
+                    <input type="text"
+                           asp-for="NewProfile.NetWorth"
+                           placeholder="NetWorth"
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <input type="text"
+                           asp-for="NewProfile.Source"
+                           placeholder="Source"
+                           class="formbold-form-input" />
+                </div>
+
+                <div>
+                    <input type="text"
+                           asp-for="NewProfile.Industry"
+                           placeholder="Industry"
+                           class="formbold-form-input" />
+                </div>
+            </div>
+
+            <button class="formbold-btn" type="submit">Submit The New Profile</button>
+        </form>
+    </div>
+</div>
