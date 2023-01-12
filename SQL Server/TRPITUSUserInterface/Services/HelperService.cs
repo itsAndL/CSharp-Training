@@ -1,5 +1,3 @@
-using System.Configuration;
-
 namespace TRPITUSUserInterface.Services
 {
     public class HelperService
@@ -19,9 +17,9 @@ namespace TRPITUSUserInterface.Services
             return _configuration.GetConnectionString(DbName);
         }
 
-        //public static string CnnVal(string DbName)
-        //{
-        //    return ConfigurationManager.ConnectionStrings[DbName].ConnectionString;
-        //}
+        public static string CnnVal(string DbName)
+        {
+            return System.Configuration.ConfigurationManager.ConnectionStrings[DbName].ConnectionString;
+        }
     }
 }
