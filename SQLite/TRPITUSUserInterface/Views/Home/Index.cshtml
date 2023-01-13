@@ -1,0 +1,43 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<TRPITUSLibrary.Models.ProfileModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Residence</th>
+            <th>Citizenship</th>
+            <th>MaritalStatus</th>
+            <th>Children</th>
+            <th>Education</th>
+            <th>Net Worth</th>
+            <th>Source</th>
+            <th>Industry</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var profile in Model)
+        {
+            <tr>
+                <td><img class="img-for-profile" src="@profile.ImageSource" /></td>
+                <td>@profile.Rank</td>
+                <td>@profile.Name</td>
+                <td>@profile.Age</td>
+                <td>@profile.Residence</td>
+                <td>@profile.Citizenship</td>
+                <td>@profile.MaritalStatus</td>
+                <td>@profile.Children</td>
+                <td>@profile.Education</td>
+                <td>$@profile.NetWorth</td>
+                <td>@profile.Source</td>
+                <td>@profile.Industry</td>
+            </tr>
+        }
+    </tbody>
+</table>
