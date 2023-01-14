@@ -33,7 +33,6 @@ namespace TRPITUSLibrary.Services
             IConfiguration _configuration = builder.Build();
 
             return _configuration.GetConnectionString(name);
-            //return System.Configuration.ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
     }
 }
