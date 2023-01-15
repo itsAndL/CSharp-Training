@@ -1,0 +1,44 @@
+@page "/AllPages/DeleteSales"
+
+@using SalesUI.Models
+@using SalesLibrary.Services
+@inject IMySQLDataAccessService _daService
+
+<PageTitle>Delete Sales</PageTitle>
+
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <img class="img-logo" src="https://cdn-icons-png.flaticon.com/512/3597/3597073.png" />
+        <EditForm Model="_ddm" OnValidSubmit="MDeleteSales">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="formbold-form-title">
+                <h2 class="">Delete Sales Info</h2>
+            </div>
+            <div class="formbold-input-flex">
+                <div>
+                    <InputText type="number" placeholder="Seller Id" class="formbold-form-input" @bind-Value="@_ddm.SellerId" />
+                </div>
+            </div>
+            <a href=""><button class="formbold-btn" @onclick="MDeleteSales">Delete Sale</button></a>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    DisplayUDSalesModel _ddm = new();
+
+    private void MDeleteSales()
+    {
+        string sql = "call sellerdb.DeleteSales(@SellerId);";
+
+        var parameters = new
+        {
+            SellerId = Int32.Parse(_ddm.SellerId),
+        };
+
+        _daService.CUDData(sql, parameters);
+
+        _ddm = new();
+    }
+}
