@@ -1,0 +1,58 @@
+@page "/AllPages/InsertSales"
+
+@using SalesUI.Models
+@using SalesLibrary.Services
+@inject IMySQLDataAccessService _daService
+
+<PageTitle>Insert Sales</PageTitle>
+
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <img class="img-logo" src="https://cdn-icons-png.flaticon.com/512/2312/2312400.png" />
+        <EditForm Model="_dim" OnValidSubmit="MInsertSales">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="formbold-form-title">
+                <h2 class="">Insert Sales Info</h2>
+            </div>
+            <div class="formbold-input-flex">
+                <div>
+                    <InputText type="number" placeholder="Seller Id" class="formbold-form-input" @bind-Value="@_dim.SellerId" />
+                </div>
+                <div>
+                    <InputText type="text" placeholder="Sale Name" class="formbold-form-input" @bind-Value="@_dim.SaleName" />
+                </div>
+            </div>
+            <div class="formbold-input-flex">
+                <div>
+                    <InputText type="date" placeholder="Date Shipping" class="formbold-form-input" @bind-Value="@_dim.DateShipping" />
+                </div>
+                <div>
+                    <InputText type="number" placeholder="Price" class="formbold-form-input" @bind-Value="@_dim.Price"  />
+                </div>
+            </div>
+            <a href=""><button class="formbold-btn" @onclick="MInsertSales">Insert Sale</button></a>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    DisplayInsertSalesModel _dim = new();
+
+    private void MInsertSales()
+    {
+        string sql = "call sellerdb.InsertSales(@SellerId, @SaleName, @DateShipping, @Price);";
+
+        var parameters = new
+        {
+            SellerId = Int32.Parse(_dim.SellerId),
+            SaleName = _dim.SaleName,
+            DateShipping = DateTime.Parse(_dim.DateShipping),
+            Price = Double.Parse(_dim.Price)
+        };
+
+        _daService.CUDData(sql, parameters);
+
+        _dim = new(); 
+    }
+}
