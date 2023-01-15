@@ -1,0 +1,48 @@
+@page "/AllPages/UpdateSales"
+
+@using SalesUI.Models
+@using SalesLibrary.Services
+@inject IMySQLDataAccessService _daService
+
+<PageTitle>Update Sales</PageTitle>
+
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <img class="img-logo" src="https://cdn-icons-png.flaticon.com/512/9147/9147804.png" />
+        <EditForm Model="_dum" OnValidSubmit="MUpdateSales">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="formbold-form-title">
+                <h2 class="">Update Sales Info</h2>
+            </div>
+            <div class="formbold-input-flex">
+                <div>
+                    <InputText type="number" placeholder="Seller Id" class="formbold-form-input" @bind-Value="@_dum.SellerId" />
+                </div>
+                <div>
+                    <InputText type="text" placeholder="New Sale Name" class="formbold-form-input" @bind-Value="@_dum.NewSaleName" />
+                </div>
+            </div>
+            <a href=""><button class="formbold-btn" @onclick="MUpdateSales">Update Sale</button></a>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    DisplayUDSalesModel _dum = new();
+
+    private void MUpdateSales()
+    {
+        string sql = "call sellerdb.UpdateSales(@SellerId, @NewSaleName);";
+
+        var parameters = new
+        {
+            SellerId = Int32.Parse(_dum.SellerId),
+            NewSaleName = _dum.NewSaleName
+        };
+
+        _daService.CUDData(sql, parameters);
+
+        _dum = new();
+    }
+}
