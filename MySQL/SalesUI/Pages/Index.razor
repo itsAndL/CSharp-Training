@@ -1,0 +1,62 @@
+@page "/"
+
+@using SalesLibrary.Models
+@using SalesLibrary.Services
+@inject IMySQLDataAccessService _daService
+
+<PageTitle>Home</PageTitle>
+
+@if (sellers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sale ID</th>
+                <th>Sale Name</th>
+                <th>Date Shipping</th>
+                <th>Price</th>
+                <th>Seller Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Address</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in sellers)
+            {
+                <tr>
+                    <td>@s.SaleID</td>
+                    <td>@s.SaleName</td>
+                    <td>@s.DateShipping.ToShortDateString()</td>
+                    <td>$@s.Price</td>
+                    <td>@s.SellerId</td>
+                    <td>@s.FirstName</td>
+                    <td>@s.LastName</td>
+                    <td>@s.EmailAddress</td>
+                    <td>@s.PhoneNumber</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<SellerModel> sellers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        string sql = "call sellerdb.ReadData";
+        var parameters = new { };
+
+        sellers = await _daService.ReadData<SellerModel, dynamic>(sql,parameters);
+    }
+}
+
+
+
